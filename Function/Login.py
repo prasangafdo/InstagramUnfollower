@@ -1,5 +1,3 @@
-import self as self
-
 from Page.LoginPage import *
 
 
