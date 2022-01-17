@@ -9,9 +9,6 @@ def getFollowingCount():
     accountPage.getFollowingCount()
 
 def getFollowersCount():
-
+    accountPage = AccountPage()
     accountPage.getFollowersCount()
 
-
-def aaa():
-    return None
