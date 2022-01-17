@@ -1,6 +1,7 @@
 import time
 
-from selenium.webdriver import ActionChains
+from selenium.webdriver import ActionChains, Keys
+from selenium.webdriver.common import actions
 
 from Page.LoginPage import *
 
@@ -10,9 +11,6 @@ class LandingPage(LoginPage):
     txtSearchBar = "//input[@aria-label='Search Input']"
     imgProfile = "//img[contains(@alt, 'profile pic')]//ancestor::div[@class='XrOey']"
     lnkProfile = "//div[contains(@class,'_7UhW9') and text()='Profile']"
-    lnkFollowing = "//a[contains(@href,'following')]"
-    lblFollowingCount = "//a[contains(@href,'following')]/span"
-    lblFollowersCount = "//a[contains(@href,'followers')]/span"
 
 
     def isSearchBarDisplayed(self):
@@ -27,15 +25,15 @@ class LandingPage(LoginPage):
         LoginPage.driver.find_element(By.XPATH, self.imgProfile).click()
         LoginPage.driver.find_element(By.XPATH, self.lnkProfile).click()
 
-    def getFollowingCount(self):
-        time.sleep(3)
-        print("You're following : ", LoginPage.driver.find_element(By.XPATH, self.lblFollowingCount).text)
-        # return LoginPage.driver.find_element(By.XPATH, self.lblFollowingCount).get_text()
 
-    def getFollowersCount(self):
-        time.sleep(3)
-        print("You're followed by : ", LoginPage.driver.find_element(By.XPATH, self.lblFollowersCount).text)
 
-    def getFollowersCount(self):
-        time.sleep(3)
-        LoginPage.driver.find_element(By.XPATH, self.lnkFollowing).click()
+    def moveMouseCursor(self):
+        time.sleep(5)
+        actions = ActionChains(LoginPage.driver)
+        actions.move_to_element(LoginPage.driver.find_element(By.XPATH, self.lstFollowing))
+        # perform the operation on the element
+        actions.click((LoginPage.driver.find_element(By.XPATH, self.lstFollowing)))
+        actions.perform()
+        LoginPage.driver.find_element(By.XPATH, self.lstFollowing).send_keys(Keys.PAGE_DOWN)
+        # actions.
+

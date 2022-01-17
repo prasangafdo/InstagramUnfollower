@@ -1,18 +1,11 @@
 from Page.LoginPage import *
 
 
-class Login:
-
-    # def loginToInstagram(username, password):
-    #     LoginPage.login(username, password)
+def loadLoginPage():
     loginPage = LoginPage()
+    loginPage.loadLoginPage()
 
-    @staticmethod
-    def loadLoginPage():
-        loginPage = LoginPage()
-        loginPage.loadLoginPage()
 
-    @staticmethod
-    def loginToInstagram(username, password):
-        loginPage = LoginPage()
-        loginPage.login(username, password)
+def loginToInstagram(username, password):
+    loginPage = LoginPage()
+    loginPage.login(username, password)
