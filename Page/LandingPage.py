@@ -1,5 +1,7 @@
 import time
 
+from selenium.webdriver import ActionChains
+
 from Page.LoginPage import *
 
 
@@ -33,3 +35,7 @@ class LandingPage(LoginPage):
     def getFollowersCount(self):
         time.sleep(3)
         print("You're followed by : ", LoginPage.driver.find_element(By.XPATH, self.lblFollowersCount).text)
+
+    def getFollowersCount(self):
+        time.sleep(3)
+        LoginPage.driver.find_element(By.XPATH, self.lnkFollowing).click()
