@@ -6,8 +6,16 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 class LoginPage:
+    mobile_emulation = {
+
+        "deviceMetrics": {"width": 360, "height": 640, "pixelRatio": 3.0},
+
+        "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1"}
+
     options = Options()
     options.add_argument("start-maximized")
+    options.add_experimental_option("mobileEmulation", mobile_emulation)
+
     # options.add_argument("--headless")
 
     driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)

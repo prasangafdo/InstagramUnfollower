@@ -12,3 +12,14 @@ def getFollowersCount():
     accountPage = AccountPage()
     accountPage.getFollowersCount()
 
+
+def clickOnFollowingLink():
+    accountPage = AccountPage()
+    accountPage.clickOnFollowingLink()
+
+
+
+
+def scrollDownFollowingList():
+    accountPage = AccountPage()
+    accountPage.scrollDownFollowingList()
