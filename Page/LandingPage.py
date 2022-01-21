@@ -24,8 +24,3 @@ class LandingPage(LoginPage):
     def navigateToProfile(self):
         LoginPage.driver.find_element(By.XPATH, self.imgProfile).click()
         LoginPage.driver.find_element(By.XPATH, self.lnkProfile).click()
-
-
-
-
-

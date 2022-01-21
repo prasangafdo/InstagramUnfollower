@@ -2,6 +2,7 @@ from Page.AccountPage import *
 
 # def loginToInstagram(username, password):
 #     LoginPage.login(username, password)
+accountPage = AccountPage()
 
 def getFollowingCount():
     accountPage = AccountPage()
@@ -9,17 +10,23 @@ def getFollowingCount():
     accountPage.getFollowingCount()
 
 def getFollowersCount():
-    accountPage = AccountPage()
+    # accountPage = AccountPage()
     accountPage.getFollowersCount()
 
 
 def clickOnFollowingLink():
-    accountPage = AccountPage()
+    # accountPage = AccountPage()
     accountPage.clickOnFollowingLink()
 
 
 
 
 def scrollDownFollowingList():
-    accountPage = AccountPage()
+    # accountPage = AccountPage()
     accountPage.scrollDownFollowingList()
+
+def navigateToAccountByURL(accountID):
+    accountPage.navigateToAccountByURL(accountID)
+
+def getFollowersList():
+    accountPage.getFollowingList()

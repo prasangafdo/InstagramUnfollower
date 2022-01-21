@@ -9,3 +9,7 @@ def loadLoginPage():
 def loginToInstagram(username, password):
     loginPage = LoginPage()
     loginPage.login(username, password)
+
+def loginToMobileView(username, password):
+    loginPage = LoginPage()
+    loginPage.loginToMobileView(username, password)
