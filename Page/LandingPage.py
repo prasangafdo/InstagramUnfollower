@@ -24,16 +24,3 @@ class LandingPage(LoginPage):
     def navigateToProfile(self):
         LoginPage.driver.find_element(By.XPATH, self.imgProfile).click()
         LoginPage.driver.find_element(By.XPATH, self.lnkProfile).click()
-
-
-
-    def moveMouseCursor(self):
-        time.sleep(5)
-        actions = ActionChains(LoginPage.driver)
-        actions.move_to_element(LoginPage.driver.find_element(By.XPATH, self.lstFollowing))
-        # perform the operation on the element
-        actions.click((LoginPage.driver.find_element(By.XPATH, self.lstFollowing)))
-        actions.perform()
-        LoginPage.driver.find_element(By.XPATH, self.lstFollowing).send_keys(Keys.PAGE_DOWN)
-        # actions.
-
