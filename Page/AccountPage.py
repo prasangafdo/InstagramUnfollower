@@ -8,15 +8,21 @@ from Page.LoginPage import *
 class AccountPage(LoginPage):
     lblFollowingCount = "//a[contains(@href,'following')]/span"
     lblFollowersCount = "//a[contains(@href,'followers')]/span"
-    lstFollowing = "//div[@class='isgrP']"
     lblFollowingListLoader = "//li[@class='wo9IH QN7kB ']/div/*[name()='svg']"
     lnkFollowing = "//a[contains(@href,'following')]"
+    lnkFollowers = "//a[contains(@href,'followers')]"
     lblFollowingPopUp = "//div[@aria-label='Following']"
     lblFollowingList = "//a[contains(@class,'FPmhX notranslate')]"
+    lblFollowersList = "//a[contains(@class,'FPmhX notranslate')]"
+
+    lstFollowing = []
+    lstFollowers = []
+    lstIGMembersNotFollowingBack = []
 
     # mmm = "//a[@href='/ruu_1111/']"
     # mmm = "(//div[@class='PZuss']/li)[1]"
     mmm = "//ul[@class=' jjbaz _6xe7A']"
+
 
     def getFollowingCount(self):
         time.sleep(3)
@@ -31,7 +37,11 @@ class AccountPage(LoginPage):
         time.sleep(3)
         LoginPage.driver.find_element(By.XPATH, self.lnkFollowing).click()
 
-    def scrollDownFollowingList(self):
+    def clickOnFollowersLink(self):
+        time.sleep(3)
+        LoginPage.driver.find_element(By.XPATH, self.lnkFollowers).click()
+
+    def scrollDownTheList(self):
         time.sleep(10)
         SCROLL_PAUSE_TIME = 2
 
@@ -63,6 +73,28 @@ class AccountPage(LoginPage):
         time.sleep(2)
         for user in LoginPage.driver.find_elements(By.XPATH, self.lblFollowingList):
             print(user.text)
+            self.lstFollowing.append(user.text)
 
+    def getFollowersList(self):
+        time.sleep(2)
+        for user in LoginPage.driver.find_elements(By.XPATH, self.lblFollowersList):
+            print(user.text)
+            self.lstFollowers.append(user.text)
 
+    def getIGMembersWhoFollowYouBack(self):
+        print("--------Good people---------")
+        for val1 in self.lstFollowing:
+            for val2 in self.lstFollowers:
+                if val1 == val2:
+                    print(val1)
+        print("--End of good people")
 
+    def getIGMembersWhoDontFollowYouBack(self):
+        print("--------These people does not follow you back---------")
+        for val1 in self.lstFollowers:
+            for val2 in self.lstFollowing:
+                if val1 == val2:
+                    self.lstFollowing.remove(val2)
+
+        print(self.lstFollowing)
+        print("--End of bad people--")

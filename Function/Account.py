@@ -4,10 +4,12 @@ from Page.AccountPage import *
 #     LoginPage.login(username, password)
 accountPage = AccountPage()
 
+
 def getFollowingCount():
     accountPage = AccountPage()
     # return landingPage.getFollowingCount()
     accountPage.getFollowingCount()
+
 
 def getFollowersCount():
     # accountPage = AccountPage()
@@ -18,15 +20,30 @@ def clickOnFollowingLink():
     # accountPage = AccountPage()
     accountPage.clickOnFollowingLink()
 
-
-
-
-def scrollDownFollowingList():
+def clickOnFollowersLink():
     # accountPage = AccountPage()
-    accountPage.scrollDownFollowingList()
+    accountPage.clickOnFollowersLink()
+
+
+def scrollDownTheList():
+    # accountPage = AccountPage()
+    accountPage.scrollDownTheList()
+
 
 def navigateToAccountByURL(accountID):
     accountPage.navigateToAccountByURL(accountID)
 
-def getFollowersList():
+
+def getFollowingList():
     accountPage.getFollowingList()
+
+
+def getFollowersList():
+    accountPage.getFollowersList()
+
+
+def getIGMembersWhoFollowYouBack():
+    accountPage.getIGMembersWhoFollowYouBack()
+
+def getIGMembersWhoDontFollowYouBack():
+    accountPage.getIGMembersWhoDontFollowYouBack()
