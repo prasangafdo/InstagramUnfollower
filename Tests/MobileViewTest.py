@@ -43,3 +43,12 @@ class InstagramAutomator(softest.TestCase):
         Landing.endSession()
         self.assert_all()
 
+    def test_getFollowersWhoFollowYouBack(self):
+        a = ["panda", "milo", "baby", "baba"]
+        b = ["panda", "baby", "nanny", "pinky"]
+
+        for val1 in a:
+            for val2 in b:
+                if val1 == val2:
+                    print(val1)
+
