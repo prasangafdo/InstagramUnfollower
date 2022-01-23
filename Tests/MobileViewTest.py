@@ -22,24 +22,24 @@ class InstagramAutomator(softest.TestCase):
     #     Landing.endSession()
     #     self.assert_all()
 
-    # def test_getFollowersAndFollowingCount(self):
-    #     Login.loadLoginPage()
-    #     Login.loginToInstagram("username", "password")
-    #     self.soft_assert(self.assertTrue, Landing.isSearchBarDisplayed())
-    #     Landing.navigateToProfile()
-    #     Account.getFollowersCount()
-    #     Account.getFollowersCount()
-    #     Landing.endSession()
-    #     self.assert_all()
+    def test_getFollowersAndFollowingCount(self):
+        Login.loadLoginPage()
+        # Login.loginToMobileView("username", "password")
+        Account.navigateToAccountByURL("prasangafdz")
+        Account.getFollowersCount()
+        Account.getFollowingCount()
+        Landing.endSession()
+        self.assert_all()
 
     def test_getFollowingsList(self):
         Login.loadLoginPage()
-        Login.loginToInstagram("username", "password")
+        Login.loginToMobileView("username", "password")
         # self.soft_assert(self.assertTrue, Landing.isSearchBarDisplayed())
         Account.navigateToAccountByURL("prasangafdz")
-        Account.clickOnFollowingLink()
-        Account.scrollDownFollowingList()
+        Account.clickOnFollowersLink()
+        Account.scrollDownTheList()
         Account.getFollowersList()
-
+        Account.getFollowingList()
         Landing.endSession()
         self.assert_all()
+

@@ -11,8 +11,10 @@ class AccountPage(LoginPage):
     lstFollowing = "//div[@class='isgrP']"
     lblFollowingListLoader = "//li[@class='wo9IH QN7kB ']/div/*[name()='svg']"
     lnkFollowing = "//a[contains(@href,'following')]"
+    lnkFollowers = "//a[contains(@href,'followers')]"
     lblFollowingPopUp = "//div[@aria-label='Following']"
     lblFollowingList = "//a[contains(@class,'FPmhX notranslate')]"
+    lblFollowersList = "//a[contains(@class,'FPmhX notranslate')]"
 
     # mmm = "//a[@href='/ruu_1111/']"
     # mmm = "(//div[@class='PZuss']/li)[1]"
@@ -31,7 +33,11 @@ class AccountPage(LoginPage):
         time.sleep(3)
         LoginPage.driver.find_element(By.XPATH, self.lnkFollowing).click()
 
-    def scrollDownFollowingList(self):
+    def clickOnFollowersLink(self):
+        time.sleep(3)
+        LoginPage.driver.find_element(By.XPATH, self.lnkFollowers).click()
+
+    def scrollDownTheList(self):
         time.sleep(10)
         SCROLL_PAUSE_TIME = 2
 
@@ -64,5 +70,7 @@ class AccountPage(LoginPage):
         for user in LoginPage.driver.find_elements(By.XPATH, self.lblFollowingList):
             print(user.text)
 
-
-
+    def getFollowersList(self):
+        time.sleep(2)
+        for user in LoginPage.driver.find_elements(By.XPATH, self.lblFollowersList):
+            print(user.text)
