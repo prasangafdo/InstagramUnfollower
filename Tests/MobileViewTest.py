@@ -66,25 +66,17 @@ class InstagramAutomator(softest.TestCase):
         Account.getIGMembersWhoFollowYouBack()
 
     def test_getIGMembersWhoDontFollowYouBack(self):
-    #     Login.loadLoginPage()
-    #     Login.loginToMobileView("username", "password")
-    #     # self.soft_assert(self.assertTrue, Landing.isSearchBarDisplayed())
-    #     Account.navigateToAccountByURL("prasangafdz")
-    #     Account.clickOnFollowersLink()
-    #     Account.scrollDownTheList()
-    #     Account.getFollowersList()
-    #     Account.navigateToAccountByURL("prasangafdz")
-    #     Account.clickOnFollowingLink()
-    #     Account.scrollDownTheList()
-    #     # Account.getFollowersList()
-    #     Account.getFollowingList()
-    #     Account.getIGMembersWhoDontFollowYouBack()
-        a = ["panda", "milo", "baby", "baba"]
-        b = ["panda", "baby", "nanny", "pinky"]
-        c = []
-        for val1 in a:
-            for val2 in b:
-                if val1 == val2:
-                    b.remove(val2)
+        Login.loadLoginPage()
+        Login.loginToMobileView("username", "password")
+        # self.soft_assert(self.assertTrue, Landing.isSearchBarDisplayed())
+        Account.navigateToAccountByURL("prasangafdz")
+        Account.clickOnFollowersLink()
+        Account.scrollDownTheList()
+        Account.getFollowersList()
+        Account.navigateToAccountByURL("prasangafdz")
+        Account.clickOnFollowingLink()
+        Account.scrollDownTheList()
+        # Account.getFollowersList()
+        Account.getFollowingList()
+        Account.getIGMembersWhoDontFollowYouBack()
 
-        print(b)

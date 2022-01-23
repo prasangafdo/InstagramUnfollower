@@ -90,9 +90,11 @@ class AccountPage(LoginPage):
         print("--End of good people")
 
     def getIGMembersWhoDontFollowYouBack(self):
-        print("--------Bad people---------")
-        for val1 in self.lstFollowing:
-            for val2 in self.lstFollowers:
+        print("--------These people does not follow you back---------")
+        for val1 in self.lstFollowers:
+            for val2 in self.lstFollowing:
                 if val1 == val2:
-                    print(val1)
-        print("--End of bad people")
+                    self.lstFollowing.remove(val2)
+
+        print(self.lstFollowing)
+        print("--End of bad people--")

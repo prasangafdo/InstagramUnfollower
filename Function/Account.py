@@ -44,3 +44,6 @@ def getFollowersList():
 
 def getIGMembersWhoFollowYouBack():
     accountPage.getIGMembersWhoFollowYouBack()
+
+def getIGMembersWhoDontFollowYouBack():
+    accountPage.getIGMembersWhoDontFollowYouBack()
