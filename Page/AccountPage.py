@@ -17,6 +17,7 @@ class AccountPage(LoginPage):
 
     lstFollowing = []
     lstFollowers = []
+    lstIGMembersNotFollowingBack = []
 
     # mmm = "//a[@href='/ruu_1111/']"
     # mmm = "(//div[@class='PZuss']/li)[1]"
@@ -87,3 +88,11 @@ class AccountPage(LoginPage):
                 if val1 == val2:
                     print(val1)
         print("--End of good people")
+
+    def getIGMembersWhoDontFollowYouBack(self):
+        print("--------Bad people---------")
+        for val1 in self.lstFollowing:
+            for val2 in self.lstFollowers:
+                if val1 == val2:
+                    print(val1)
+        print("--End of bad people")
