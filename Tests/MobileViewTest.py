@@ -38,17 +38,30 @@ class InstagramAutomator(softest.TestCase):
         Account.navigateToAccountByURL("prasangafdz")
         Account.clickOnFollowersLink()
         Account.scrollDownTheList()
-        Account.getFollowersList()
+        # Account.getFollowersList()
         Account.getFollowingList()
         Landing.endSession()
         self.assert_all()
 
-    def test_getFollowersWhoFollowYouBack(self):
-        a = ["panda", "milo", "baby", "baba"]
-        b = ["panda", "baby", "nanny", "pinky"]
+    def test_getIGMembersWhoFollowYouBack(self):
+        # a = ["panda", "milo", "baby", "baba"]
+        # b = ["panda", "baby", "nanny", "pinky"]
+        #
+        # for val1 in a:
+        #     for val2 in b:
+        #         if val1 == val2:
+        #             print(val1)
+        Login.loadLoginPage()
+        Login.loginToMobileView("username", "password")
+        # self.soft_assert(self.assertTrue, Landing.isSearchBarDisplayed())
+        Account.navigateToAccountByURL("prasangafdz")
+        Account.clickOnFollowersLink()
+        Account.scrollDownTheList()
+        Account.getFollowersList()
+        Account.navigateToAccountByURL("prasangafdz")
+        Account.clickOnFollowingLink()
+        Account.scrollDownTheList()
+        # Account.getFollowersList()
+        Account.getFollowingList()
 
-        for val1 in a:
-            for val2 in b:
-                if val1 == val2:
-                    print(val1)
-
+        Account.getIGMembersWhoFollowYouBack()
