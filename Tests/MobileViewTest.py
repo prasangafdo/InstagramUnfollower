@@ -7,7 +7,7 @@ import softest
 # from Function import Login, Account
 from Function import Landing
 from Function import  Account,Login
-
+from Constants import Credentials
 
 # from ..Function import Landing
 # import Function
@@ -52,7 +52,7 @@ class InstagramAutomator(softest.TestCase):
         #         if val1 == val2:
         #             print(val1)
         Login.loadLoginPage()
-        Login.loginToMobileView("username", "password")
+        Login.loginToMobileView(Credentials.Username, Credentials.Password)
         # self.soft_assert(self.assertTrue, Landing.isSearchBarDisplayed())
         Account.navigateToAccountByURL("prasangafdz")
         Account.clickOnFollowersLink()
@@ -67,7 +67,7 @@ class InstagramAutomator(softest.TestCase):
 
     def test_getIGMembersWhoDontFollowYouBack(self):
         Login.loadLoginPage()
-        Login.loginToMobileView("username", "password")
+        Login.loginToMobileView(Credentials.Username, Credentials.Password)
         # self.soft_assert(self.assertTrue, Landing.isSearchBarDisplayed())
         Account.navigateToAccountByURL("prasangafdz")
         Account.clickOnFollowersLink()
