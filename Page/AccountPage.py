@@ -99,12 +99,15 @@ class AccountPage(LoginPage):
                 if val1 == val2:
                     self.lstFollowing.remove(val2)
 
-        print(self.lstFollowing)
-        print("--End of bad people--")
+        for val2 in self.lstFollowing:
+            print(val2)
+        print("-----------End of bad people--------")
 
 
     def setExceptList(self, userids):
         # pass
         self.lstExcept.append(userids)
         print("--------Except these from unfollowing---------")
-        print(self.lstExcept in self.lstFollowing)
+        for val in self.lstFollowing:
+            if val in self.lstExcept:
+                print(val)

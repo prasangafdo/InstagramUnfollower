@@ -6,8 +6,9 @@ import softest
 # sys.path.append("..")
 # from Function import Login, Account
 from Function import Landing
-from Function import  Account,Login
+from Function import Account, Login
 from Constants import Credentials
+
 
 # from ..Function import Landing
 # import Function
@@ -94,14 +95,14 @@ class InstagramAutomator(softest.TestCase):
         # Account.getFollowersList()
         Account.getFollowingList()
         Account.getIGMembersWhoDontFollowYouBack()
-#         Not completed yet
+
+    #         Not completed yet
 
     def test_unfollowIGMembersWhoDontFollowYouBackExceptForSelectedMembers(self):
         # Sometimes we don't need to unfollow everyone.
         # In such scenarios set excepted list with userids and run this script
         Login.loadLoginPage()
         Login.loginToMobileView(Credentials.Username, Credentials.Password)
-        # self.soft_assert(self.assertTrue, Landing.isSearchBarDisplayed())
         Account.navigateToAccountByURL(Credentials.accountName)
         Account.clickOnFollowersLink()
         Account.scrollDownTheList()
@@ -112,5 +113,5 @@ class InstagramAutomator(softest.TestCase):
         # Account.getFollowersList()
         Account.getFollowingList()
         Account.getIGMembersWhoDontFollowYouBack()
-        # Account.setexceptedUserList("pawani_maheshi")
-
+        Account.setexceptedUserList("")  # Pass the excepted user ids here
+        Landing.endSession()
