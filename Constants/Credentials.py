@@ -1,2 +1,3 @@
-Username = "username"
-Password = "pw"
+Username = ""
+Password = ""
+accountName = ""

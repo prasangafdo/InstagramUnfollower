@@ -98,3 +98,6 @@ class AccountPage(LoginPage):
 
         print(self.lstFollowing)
         print("--End of bad people--")
+
+
+    def

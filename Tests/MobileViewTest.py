@@ -80,3 +80,19 @@ class InstagramAutomator(softest.TestCase):
         Account.getFollowingList()
         Account.getIGMembersWhoDontFollowYouBack()
 
+    def test_unfollowIGMembersWhoDontFollowYouBack(self):
+        Login.loadLoginPage()
+        Login.loginToMobileView(Credentials.Username, Credentials.Password)
+        # self.soft_assert(self.assertTrue, Landing.isSearchBarDisplayed())
+        Account.navigateToAccountByURL(Credentials.accountName)
+        Account.clickOnFollowersLink()
+        Account.scrollDownTheList()
+        Account.getFollowersList()
+        Account.navigateToAccountByURL(Credentials.accountName)
+        Account.clickOnFollowingLink()
+        Account.scrollDownTheList()
+        # Account.getFollowersList()
+        Account.getFollowingList()
+        Account.getIGMembersWhoDontFollowYouBack()
+
+
