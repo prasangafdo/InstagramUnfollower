@@ -113,5 +113,6 @@ class InstagramAutomator(softest.TestCase):
         # Account.getFollowersList()
         Account.getFollowingList()
         Account.getIGMembersWhoDontFollowYouBack()
-        Account.setexceptedUserList("")  # Pass the excepted user ids here
+        lstUsers = [""]  # Pass the excepted user ids here
+        Account.setexceptedUserList(lstUsers)
         Landing.endSession()

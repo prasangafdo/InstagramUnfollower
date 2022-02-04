@@ -25,7 +25,6 @@ class AccountPage(LoginPage):
     # mmm = "(//div[@class='PZuss']/li)[1]"
     mmm = "//ul[@class=' jjbaz _6xe7A']"
 
-
     def getFollowingCount(self):
         time.sleep(3)
         print("You're following : ", LoginPage.driver.find_element(By.XPATH, self.lblFollowingCount).text)
@@ -103,11 +102,13 @@ class AccountPage(LoginPage):
             print(val2)
         print("-----------End of bad people--------")
 
-
     def setExceptList(self, userids):
         # pass
-        self.lstExcept.append(userids)
+        for temp in userids:
+            self.lstExcept.append(temp)
         print("--------Except these from unfollowing---------")
-        for val in self.lstFollowing:
-            if val in self.lstExcept:
-                print(val)
+        # print(userids)
+        for val in self.lstExcept:
+            for val2 in self.lstFollowing:
+                if val == val2:
+                    print(val)
