@@ -31,9 +31,9 @@ class InstagramAutomator(softest.TestCase):
         Landing.endSession()
         self.assert_all()
 
-    def test_getFollowingsList(self):
+    def test_getFollowersList(self):
         Login.loadLoginPage()
-        Login.loginToMobileView("username", "password")
+        Login.loginToMobileView(Credentials.Username, Credentials.Password)
         # self.soft_assert(self.assertTrue, Landing.isSearchBarDisplayed())
         Account.navigateToAccountByURL("prasangafdz")
         Account.clickOnFollowersLink()
@@ -94,5 +94,23 @@ class InstagramAutomator(softest.TestCase):
         # Account.getFollowersList()
         Account.getFollowingList()
         Account.getIGMembersWhoDontFollowYouBack()
+#         Not completed yet
 
+    def test_unfollowIGMembersWhoDontFollowYouBackExceptForSelectedMembers(self):
+        # Sometimes we don't need to unfollow everyone.
+        # In such scenarios set excepted list with userids and run this script
+        Login.loadLoginPage()
+        Login.loginToMobileView(Credentials.Username, Credentials.Password)
+        # self.soft_assert(self.assertTrue, Landing.isSearchBarDisplayed())
+        Account.navigateToAccountByURL(Credentials.accountName)
+        Account.clickOnFollowersLink()
+        Account.scrollDownTheList()
+        Account.getFollowersList()
+        Account.navigateToAccountByURL(Credentials.accountName)
+        Account.clickOnFollowingLink()
+        Account.scrollDownTheList()
+        # Account.getFollowersList()
+        Account.getFollowingList()
+        Account.getIGMembersWhoDontFollowYouBack()
+        # Account.setexceptedUserList("pawani_maheshi")
 

@@ -47,3 +47,6 @@ def getIGMembersWhoFollowYouBack():
 
 def getIGMembersWhoDontFollowYouBack():
     accountPage.getIGMembersWhoDontFollowYouBack()
+
+def setexceptedUserList(userids):
+    accountPage.setExceptList(userids)

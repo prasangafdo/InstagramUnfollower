@@ -12,12 +12,14 @@ class AccountPage(LoginPage):
     lnkFollowing = "//a[contains(@href,'following')]"
     lnkFollowers = "//a[contains(@href,'followers')]"
     lblFollowingPopUp = "//div[@aria-label='Following']"
-    lblFollowingList = "//a[contains(@class,'FPmhX notranslate')]"
-    lblFollowersList = "//a[contains(@class,'FPmhX notranslate')]"
+    lblFollowingList = "//a[contains(@class,'notranslate')]/span"
+    lblFollowersList = "//a[contains(@class,'notranslate')]/span"
 
     lstFollowing = []
     lstFollowers = []
     lstIGMembersNotFollowingBack = []
+
+    lstExcept = []
 
     # mmm = "//a[@href='/ruu_1111/']"
     # mmm = "(//div[@class='PZuss']/li)[1]"
@@ -74,6 +76,7 @@ class AccountPage(LoginPage):
         for user in LoginPage.driver.find_elements(By.XPATH, self.lblFollowingList):
             print(user.text)
             self.lstFollowing.append(user.text)
+        print(self.lstFollowing)
 
     def getFollowersList(self):
         time.sleep(2)
@@ -82,12 +85,12 @@ class AccountPage(LoginPage):
             self.lstFollowers.append(user.text)
 
     def getIGMembersWhoFollowYouBack(self):
-        print("--------Good people---------")
+        print("--------Good people. These users are following you back---------")
         for val1 in self.lstFollowing:
             for val2 in self.lstFollowers:
                 if val1 == val2:
                     print(val1)
-        print("--End of good people")
+        print("--End of good people---")
 
     def getIGMembersWhoDontFollowYouBack(self):
         print("--------These people does not follow you back---------")
@@ -100,4 +103,8 @@ class AccountPage(LoginPage):
         print("--End of bad people--")
 
 
-    def
+    def setExceptList(self, userids):
+        # pass
+        self.lstExcept.append(userids)
+        print("--------Except these from unfollowing---------")
+        print(self.lstExcept in self.lstFollowing)
