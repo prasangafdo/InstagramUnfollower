@@ -14,6 +14,9 @@ class AccountPage(LoginPage):
     lblFollowingPopUp = "//div[@aria-label='Following']"
     lblFollowingList = "//a[contains(@class,'notranslate')]/span"
     lblFollowersList = "//a[contains(@class,'notranslate')]/span"
+    btnUnfollow = "//span[contains(@class,'glyphsSpriteFriend_Follow')]/ancestor::button"
+
+    btnUnfollowInPopup = "//button[contains(@class,'-Cab_') and text()='Unfollow']" # Add a click to this element and add a verification point
 
     lstFollowing = []
     lstFollowers = []
@@ -107,8 +110,17 @@ class AccountPage(LoginPage):
         for temp in userids:
             self.lstExcept.append(temp)
         print("--------Except these from unfollowing---------")
-        # print(userids)
-        for val in self.lstExcept:
-            for val2 in self.lstFollowing:
-                if val == val2:
-                    print(val)
+        print(userids)
+        for exceptVal in self.lstExcept:
+            for followingVal in self.lstFollowing:
+                if exceptVal == followingVal:
+                    print(followingVal)
+                    self.lstFollowing.remove(followingVal)
+
+        print(self.lstFollowing)
+        for val3 in self.lstFollowing:
+            self.navigateToAccountByURL(val3)
+            self.clickOnUnfollowButton()
+
+    def clickOnUnfollowButton(self):
+        LoginPage.driver.find_element(By.XPATH, self.btnUnfollow).click()
