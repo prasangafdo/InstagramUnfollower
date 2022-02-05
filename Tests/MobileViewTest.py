@@ -6,7 +6,8 @@ import softest
 # sys.path.append("..")
 # from Function import Login, Account
 from Function import Landing
-from Function import  Account,Login
+from Function import Account, Login
+from Constants import Credentials
 
 
 # from ..Function import Landing
@@ -31,9 +32,9 @@ class InstagramAutomator(softest.TestCase):
         Landing.endSession()
         self.assert_all()
 
-    def test_getFollowingsList(self):
+    def test_getFollowersList(self):
         Login.loadLoginPage()
-        Login.loginToMobileView("username", "password")
+        Login.loginToMobileView(Credentials.Username, Credentials.Password)
         # self.soft_assert(self.assertTrue, Landing.isSearchBarDisplayed())
         Account.navigateToAccountByURL("prasangafdz")
         Account.clickOnFollowersLink()
@@ -52,7 +53,7 @@ class InstagramAutomator(softest.TestCase):
         #         if val1 == val2:
         #             print(val1)
         Login.loadLoginPage()
-        Login.loginToMobileView("username", "password")
+        Login.loginToMobileView(Credentials.Username, Credentials.Password)
         # self.soft_assert(self.assertTrue, Landing.isSearchBarDisplayed())
         Account.navigateToAccountByURL("prasangafdz")
         Account.clickOnFollowersLink()
@@ -67,7 +68,7 @@ class InstagramAutomator(softest.TestCase):
 
     def test_getIGMembersWhoDontFollowYouBack(self):
         Login.loadLoginPage()
-        Login.loginToMobileView("username", "password")
+        Login.loginToMobileView(Credentials.Username, Credentials.Password)
         # self.soft_assert(self.assertTrue, Landing.isSearchBarDisplayed())
         Account.navigateToAccountByURL("prasangafdz")
         Account.clickOnFollowersLink()
@@ -80,3 +81,38 @@ class InstagramAutomator(softest.TestCase):
         Account.getFollowingList()
         Account.getIGMembersWhoDontFollowYouBack()
 
+    def test_unfollowIGMembersWhoDontFollowYouBack(self):
+        Login.loadLoginPage()
+        Login.loginToMobileView(Credentials.Username, Credentials.Password)
+        # self.soft_assert(self.assertTrue, Landing.isSearchBarDisplayed())
+        Account.navigateToAccountByURL(Credentials.accountName)
+        Account.clickOnFollowersLink()
+        Account.scrollDownTheList()
+        Account.getFollowersList()
+        Account.navigateToAccountByURL(Credentials.accountName)
+        Account.clickOnFollowingLink()
+        Account.scrollDownTheList()
+        # Account.getFollowersList()
+        Account.getFollowingList()
+        Account.getIGMembersWhoDontFollowYouBack()
+
+    #         Not completed yet
+
+    def test_unfollowIGMembersWhoDontFollowYouBackExceptForSelectedMembers(self):
+        # Sometimes we don't need to unfollow everyone.
+        # In such scenarios set excepted list with userids and run this script
+        Login.loadLoginPage()
+        Login.loginToMobileView(Credentials.Username, Credentials.Password)
+        Account.navigateToAccountByURL(Credentials.accountName)
+        Account.clickOnFollowersLink()
+        Account.scrollDownTheList()
+        Account.getFollowersList()
+        Account.navigateToAccountByURL(Credentials.accountName)
+        Account.clickOnFollowingLink()
+        Account.scrollDownTheList()
+        # Account.getFollowersList()
+        Account.getFollowingList()
+        Account.getIGMembersWhoDontFollowYouBack()
+        lstUsers = [""]  # Pass the excepted user ids here
+        Account.setexceptedUserList(lstUsers)
+        Landing.endSession()

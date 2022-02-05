@@ -12,17 +12,21 @@ class AccountPage(LoginPage):
     lnkFollowing = "//a[contains(@href,'following')]"
     lnkFollowers = "//a[contains(@href,'followers')]"
     lblFollowingPopUp = "//div[@aria-label='Following']"
-    lblFollowingList = "//a[contains(@class,'FPmhX notranslate')]"
-    lblFollowersList = "//a[contains(@class,'FPmhX notranslate')]"
+    lblFollowingList = "//a[contains(@class,'notranslate')]/span"
+    lblFollowersList = "//a[contains(@class,'notranslate')]/span"
+    btnUnfollow = "//span[contains(@class,'glyphsSpriteFriend_Follow')]/ancestor::button"
+
+    btnUnfollowInPopup = "//button[contains(@class,'-Cab_') and text()='Unfollow']" # Add a click to this element and add a verification point
 
     lstFollowing = []
     lstFollowers = []
     lstIGMembersNotFollowingBack = []
 
+    lstExcept = []
+
     # mmm = "//a[@href='/ruu_1111/']"
     # mmm = "(//div[@class='PZuss']/li)[1]"
     mmm = "//ul[@class=' jjbaz _6xe7A']"
-
 
     def getFollowingCount(self):
         time.sleep(3)
@@ -74,6 +78,7 @@ class AccountPage(LoginPage):
         for user in LoginPage.driver.find_elements(By.XPATH, self.lblFollowingList):
             print(user.text)
             self.lstFollowing.append(user.text)
+        print(self.lstFollowing)
 
     def getFollowersList(self):
         time.sleep(2)
@@ -82,12 +87,12 @@ class AccountPage(LoginPage):
             self.lstFollowers.append(user.text)
 
     def getIGMembersWhoFollowYouBack(self):
-        print("--------Good people---------")
+        print("--------Good people. These users are following you back---------")
         for val1 in self.lstFollowing:
             for val2 in self.lstFollowers:
                 if val1 == val2:
                     print(val1)
-        print("--End of good people")
+        print("--End of good people---")
 
     def getIGMembersWhoDontFollowYouBack(self):
         print("--------These people does not follow you back---------")
@@ -96,5 +101,26 @@ class AccountPage(LoginPage):
                 if val1 == val2:
                     self.lstFollowing.remove(val2)
 
+        for val2 in self.lstFollowing:
+            print(val2)
+        print("-----------End of bad people--------")
+
+    def setExceptList(self, userids):
+        # pass
+        for temp in userids:
+            self.lstExcept.append(temp)
+        print("--------Except these from unfollowing---------")
+        print(userids)
+        for exceptVal in self.lstExcept:
+            for followingVal in self.lstFollowing:
+                if exceptVal == followingVal:
+                    print(followingVal)
+                    self.lstFollowing.remove(followingVal)
+
         print(self.lstFollowing)
-        print("--End of bad people--")
+        for val3 in self.lstFollowing:
+            self.navigateToAccountByURL(val3)
+            self.clickOnUnfollowButton()
+
+    def clickOnUnfollowButton(self):
+        LoginPage.driver.find_element(By.XPATH, self.btnUnfollow).click()
