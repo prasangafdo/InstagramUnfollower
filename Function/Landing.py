@@ -15,3 +15,7 @@ def endSession():
 def navigateToProfile():
     landingPage = LandingPage()
     landingPage.navigateToProfile()
+
+def openDirectMessages():
+    landingPage = LandingPage()
+    landingPage.openDirectMessages()

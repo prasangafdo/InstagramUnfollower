@@ -113,9 +113,17 @@ class InstagramAutomator(softest.TestCase):
         # Account.getFollowersList()
         Account.getFollowingList()
         Account.getIGMembersWhoDontFollowYouBack()
-        lstUsers = [""]
+        lstUsers = ["sanu_life, naguleskrrish, explorers.lk"]
         # Pass the excepted user ids here
         Account.setexceptedUserList(lstUsers)
         Account.getTheListToUnfollow()
         Account.unfollowUsersExceptSelectedUsers()
         Landing.endSession()
+
+    def test_deleteAllSentMessagesToAParticularUser(self):
+        Login.loadLoginPage()
+        Login.loginToMobileView(Credentials.Username, Credentials.Password)
+        Account.navigateToAccountByURL(Credentials.accountName)
+        Landing.openDirectMessages()
+        # // h5[text() = '1 Request'] / parent::button
+        # // div[text() = 'user display name'] / ancestor::a
