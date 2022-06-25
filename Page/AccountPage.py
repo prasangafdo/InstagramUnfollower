@@ -70,6 +70,7 @@ class AccountPage(LoginPage):
         time.sleep(1)
         url = "https://www.instagram.com/" + endpoint
         LoginPage.driver.get(url)
+        time.sleep(5)
 
     def isLoadingDisplayed(self):
         return LoginPage.driver.find_element(By.XPATH, self.lblFollowingListLoader).is_displayed()

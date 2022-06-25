@@ -6,9 +6,10 @@ import softest
 # sys.path.append("..")
 # from Function import Login, Account
 from Function import Landing
-from Function import Account, Login
+from Function import Account, Login, Message
 from Constants import Credentials
 
+# from Page import MessagesPage
 
 # from ..Function import Landing
 # import Function
@@ -125,5 +126,5 @@ class InstagramAutomator(softest.TestCase):
         Login.loginToMobileView(Credentials.Username, Credentials.Password)
         Account.navigateToAccountByURL(Credentials.accountName)
         Landing.openDirectMessages()
-        # // h5[text() = '1 Request'] / parent::button
-        # // div[text() = 'user display name'] / ancestor::a
+        Message.openMessageRequests()
+
