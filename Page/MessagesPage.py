@@ -14,3 +14,5 @@ class MessagesPage(LoginPage):
         LoginPage.driver.close()
         # LandingPage.driver.quit()
 
+    def scrollToTop(self):
+        LoginPage.driver.execute_script("window.scrollTo({ top: 0, behavior: 'smooth' });")

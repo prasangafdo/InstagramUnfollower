@@ -12,6 +12,9 @@ class LandingPage(LoginPage):
     imgProfile = "//img[contains(@alt, 'profile pic')]//ancestor::div[@class='XrOey']"
     lnkProfile = "//div[contains(@class,'_7UhW9') and text()='Profile']"
     btnDirectMessage = "//a[contains(@aria-label,'Direct messaging')]"
+    btnHome = "//*[name()='svg' and @aria-label='Home']/ancestor::a"
+    btnAddToHomeCancel ="//button[text()='Cancel']"
+    btnNotificationNotNow ="//button[text()='Not Now']"
 
     def isSearchBarDisplayed(self):
         time.sleep(5)
@@ -27,3 +30,18 @@ class LandingPage(LoginPage):
 
     def openDirectMessages(self):
         LoginPage.driver.find_element(By.XPATH, self.btnDirectMessage).click()
+        time.sleep(3)
+
+    def navigateToHome(self):
+        LoginPage.driver.find_element(By.XPATH, self.btnHome).click()
+        time.sleep(3)
+
+    def clickCancelFromAddToHomePopup(self):
+        LoginPage.driver.find_element(By.XPATH, self.btnAddToHomeCancel).click()
+        time.sleep(2)
+
+    def clickNotNowFromEnableNotificationPopup(self):
+        LoginPage.driver.find_element(By.XPATH, self.btnNotificationNotNow).click()
+        time.sleep(2)
+
+

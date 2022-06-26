@@ -9,6 +9,7 @@ from Function import Landing
 from Function import Account, Login, Message
 from Constants import Credentials
 
+
 # from Page import MessagesPage
 
 # from ..Function import Landing
@@ -125,6 +126,12 @@ class InstagramAutomator(softest.TestCase):
         Login.loadLoginPage()
         Login.loginToMobileView(Credentials.Username, Credentials.Password)
         Account.navigateToAccountByURL(Credentials.accountName)
+        Landing.navigateToHome()
+        Landing.clickCancelFromAddToHomePopup()
         Landing.openDirectMessages()
+        Landing.clickNotNowFromEnableNotificationPopup()
         Message.openMessageRequests()
-
+        Message.scrollToTop()
+        # Scroll to top
+        # window.scrollTo(0, 0);
+        # window.scrollTo({ top: 0, behavior: 'smooth' });

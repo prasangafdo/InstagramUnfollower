@@ -45,7 +45,7 @@ class LoginPage:
         # self.driver.find_element(self.lblPassword).click()
         self.driver.find_element(By.XPATH, self.lblPassword).send_keys(password)
         self.driver.find_element(By.XPATH, self.btnLogin).click()
-        time.sleep(4)
+        time.sleep(5)
 
 #
 # login = LoginPage()
