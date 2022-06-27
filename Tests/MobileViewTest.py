@@ -131,7 +131,7 @@ class InstagramAutomator(softest.TestCase):
         Landing.openDirectMessages()
         Landing.clickNotNowFromEnableNotificationPopup()
         Message.openMessageRequests()
-
+        Message.openUserThread()
         Message.scrollToTop()
 
         # Scroll to top

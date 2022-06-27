@@ -34,7 +34,7 @@ class LandingPage(LoginPage):
 
     def navigateToHome(self):
         LoginPage.driver.find_element(By.XPATH, self.btnHome).click()
-        time.sleep(3)
+        time.sleep(4)
 
     def clickCancelFromAddToHomePopup(self):
         LoginPage.driver.find_element(By.XPATH, self.btnAddToHomeCancel).click()
@@ -42,6 +42,6 @@ class LandingPage(LoginPage):
 
     def clickNotNowFromEnableNotificationPopup(self):
         LoginPage.driver.find_element(By.XPATH, self.btnNotificationNotNow).click()
-        time.sleep(2)
+        time.sleep(4)
 
 

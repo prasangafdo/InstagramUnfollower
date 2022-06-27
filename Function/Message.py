@@ -11,3 +11,8 @@ def openMessageRequests():
 def scrollToTop():
     messages = MessagesPage()
     messages.scrollToTop()
+
+def openUserThread():
+    messages = MessagesPage()
+    messages.openUserThread()
+
