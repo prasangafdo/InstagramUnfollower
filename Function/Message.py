@@ -16,3 +16,7 @@ def openUserThread():
     messages = MessagesPage()
     messages.openUserThread()
 
+def deleteMessage():
+    messages = MessagesPage()
+    messages.touchAndHoldAmessage()
+

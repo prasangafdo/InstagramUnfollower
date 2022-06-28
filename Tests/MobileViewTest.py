@@ -133,6 +133,7 @@ class InstagramAutomator(softest.TestCase):
         Message.openMessageRequests()
         Message.openUserThread()
         Message.scrollToTop()
+        Message.deleteMessage()
 
         # Scroll to top
         # window.scrollTo(0, 0);
