@@ -20,3 +20,8 @@ def deleteMessage():
     messages = MessagesPage()
     messages.touchAndHoldAmessage()
 
+def scrollUp():
+    messages = MessagesPage()
+    messages.scrollUp()
+
+
