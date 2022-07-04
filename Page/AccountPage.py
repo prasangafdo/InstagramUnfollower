@@ -15,8 +15,9 @@ class AccountPage(LoginPage):
     lblFollowingList = "//a[contains(@class,'notranslate')]/span"
     lblFollowersList = "//a[contains(@class,'notranslate')]/span"
     btnUnfollow = "//span[contains(@class,'glyphsSpriteFriend_Follow')]/ancestor::button"
+    btnFollow = "//button[text()='Follow']"
 
-    btnUnfollowInPopup = "//button[contains(@class,'-Cab_') and text()='Unfollow']" # Add a click to this element and add a verification point
+    btnUnfollowInPopup = "//button[contains(@class,'-Cab_') and text()='Unfollow']"  # Add a click to this element and add a verification point
 
     lstFollowing = []
     lstFollowers = []
@@ -69,6 +70,7 @@ class AccountPage(LoginPage):
         time.sleep(1)
         url = "https://www.instagram.com/" + endpoint
         LoginPage.driver.get(url)
+        time.sleep(5)
 
     def isLoadingDisplayed(self):
         return LoginPage.driver.find_element(By.XPATH, self.lblFollowingListLoader).is_displayed()
@@ -110,17 +112,27 @@ class AccountPage(LoginPage):
         for temp in userids:
             self.lstExcept.append(temp)
         print("--------Except these from unfollowing---------")
-        print(userids)
+        # print(userids)
         for exceptVal in self.lstExcept:
             for followingVal in self.lstFollowing:
                 if exceptVal == followingVal:
                     print(followingVal)
                     self.lstFollowing.remove(followingVal)
 
+    def getTheListToUnfollow(self):
+        print("--------These people will be unfollowed------------")
+        for val in self.lstFollowing:
+            print(val)
+
+    def clickOnUnfollowButton(self):
+        LoginPage.driver.find_element(By.XPATH, self.btnUnfollow).click()
+
+    def unfollowUsersExceptSelectedUsers(self):
         print(self.lstFollowing)
         for val3 in self.lstFollowing:
             self.navigateToAccountByURL(val3)
             self.clickOnUnfollowButton()
+            LoginPage.driver.find_element(By.XPATH, self.btnUnfollowInPopup).click()
 
-    def clickOnUnfollowButton(self):
-        LoginPage.driver.find_element(By.XPATH, self.btnUnfollow).click()
+    def isFollowButtonDisplayed(self):
+        return LoginPage.driver.find_element(By.XPATH, self.btnFollow).is_displayed()

@@ -50,3 +50,9 @@ def getIGMembersWhoDontFollowYouBack():
 
 def setexceptedUserList(userids):
     accountPage.setExceptList(userids)
+
+def getTheListToUnfollow():
+    accountPage.getTheListToUnfollow()
+
+def unfollowUsersExceptSelectedUsers():
+    accountPage.unfollowUsersExceptSelectedUsers()
