@@ -1,6 +1,6 @@
 import logging
 import sys
-
+import pytest
 import softest
 
 # sys.path.append("..")
@@ -25,7 +25,7 @@ class InstagramAutomator(softest.TestCase):
     #     Landing.endSession()
     #     self.assert_all()
 
-    def test_getFollowersAndFollowingCount(self):
+    def test_get_followers_and_following_count(self):
         Login.loadLoginPage()
         # Login.loginToMobileView("username", "password")
         Account.navigateToAccountByURL("prasangafdz")
