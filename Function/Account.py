@@ -31,7 +31,7 @@ def scrollDownTheList():
 
 
 def navigateToAccountByURL(accountID):
-    accountPage.navigateToAccountByURL(accountID)
+    accountPage.navigate_to_account_by_url(accountID)
 
 
 def getFollowingList():
