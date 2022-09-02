@@ -49,7 +49,8 @@ class AccountPage(LoginPage):
         self.driver.find_element(By.XPATH, self.lnkFollowing).click()
 
     def clickOnFollowersLink(self):
-        time.sleep(3)
+        WebDriverWait(self.driver, 10).until(
+            expected_conditions.visibility_of_element_located((By.XPATH, self.lnkFollowers)))
         self.driver.find_element(By.XPATH, self.lnkFollowers).click()
 
     def scrollDownTheList(self):
@@ -82,7 +83,8 @@ class AccountPage(LoginPage):
         return self.driver.find_element(By.XPATH, self.lblFollowingListLoader).is_displayed()
 
     def getFollowingList(self):
-        time.sleep(2)
+        WebDriverWait(self.driver, 10).until(
+            expected_conditions.visibility_of_element_located((By.XPATH, self.lblFollowingList)))
         for user in self.driver.find_elements(By.XPATH, self.lblFollowingList):
             print(user.text)
             self.lstFollowing.append(user.text)
