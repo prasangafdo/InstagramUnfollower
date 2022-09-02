@@ -1,6 +1,7 @@
 import time
 
 from selenium.webdriver import ActionChains, Keys
+from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -55,23 +56,29 @@ class AccountPage(LoginPage):
 
     def scrollDownTheList(self):
         time.sleep(10)
-        SCROLL_PAUSE_TIME = 2
+        # SCROLL_PAUSE_TIME = 2
+        #
+        # # Get scroll height
+        # last_height = self.driver.execute_script("return document.body.scrollHeight")
+        #
+        # while True:
+        #     # Scroll down to bottom
+        #     self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        #
+        #     # Wait to load page
+        #     time.sleep(SCROLL_PAUSE_TIME)
+        #
+        #     # Calculate new scroll height and compare with last scroll height
+        #     new_height = self.driver.execute_script("return document.body.scrollHeight")
+        #     if new_height == last_height:
+        #         break
+        #     last_height = new_height
 
-        # Get scroll height
-        last_height = self.driver.execute_script("return document.body.scrollHeight")
+        element = self.driver.find_element(By.XPATH, self.lblFollowingList)
+        ActionChains(self.driver).click_and_hold(element)
+        ActionChains(self.driver).move_by_offset(13, 15).perform()
 
-        while True:
-            # Scroll down to bottom
-            self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
-            # Wait to load page
-            time.sleep(SCROLL_PAUSE_TIME)
-
-            # Calculate new scroll height and compare with last scroll height
-            new_height = self.driver.execute_script("return document.body.scrollHeight")
-            if new_height == last_height:
-                break
-            last_height = new_height
 
     def navigate_to_account_by_url(self, endpoint):
         time.sleep(1)
